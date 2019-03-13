@@ -7,12 +7,13 @@
       <e p="Assets" t="Include">
         <e p="Reference" t="Include">
           <e p="Scripts" t="Include">
-            <e p="Camera" t="Include">
-              <e p="FollowPlayer.cs" t="Include" />
+            <e p="Enemie Block" t="Include">
+              <e p="BlockSpawner.cs" t="Include" />
+              <e p="EnemieBlock.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
               <e p="Movement.cs" t="Include" />
-              <e p="PlayerInput.cs" t="Include" />
+              <e p="Player.cs" t="Include" />
             </e>
           </e>
         </e>
