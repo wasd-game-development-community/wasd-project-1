@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float Velocity;
-    public float Smoothness;    //movement smoothness factor
-
+    public float StartSpeed;
+    public float SpeedInc;
     public float JumpForce;
     
     public bool CanMove;
@@ -22,7 +21,8 @@ public class Movement : MonoBehaviour
          */
         _playeRigidbody = GetComponent<Rigidbody>();
         _playerTransform = GetComponent<Transform>();
-        
+
+        Player.Speed = StartSpeed;
         
         CanMove = true;
         _onGround = true;
@@ -30,33 +30,29 @@ public class Movement : MonoBehaviour
     
     public void Update()
     {
+        CanMove = !Player.IsDead && Player.IsPlaying;
+        
         if (CanMove)
         {
-            Move();
-
-            if (Input.GetKeyDown(KeyCode.Space) && _onGround)
+            Player.Speed += SpeedInc * Time.deltaTime;
+            if (Input.GetKey(KeyCode.Space) && _onGround)
             {
                 Jump();
             }
         }
     }
-
-    private void Move()
-    {
-        _playerTransform.position = Vector3.Lerp(_playerTransform.position, _playerTransform.position + _playerTransform.forward * Velocity, 1/Smoothness *  Time.deltaTime);
-    }
-
+    
     private void Jump()
     {
         _playeRigidbody.AddForce(_playerTransform.up * JumpForce);
-        _onGround = true;
+        _onGround = false;
     }
     
     /*
-     * checks if the player has hit the ground after jumping
+     * checks if the player is on the Ground 
      */
     public void OnCollisionEnter()
     {
-        
+        _onGround = true;
     }
 }

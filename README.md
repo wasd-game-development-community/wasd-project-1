@@ -1,5 +1,5 @@
 # wasd-project-1
-A simple game project using unity
+This is the 1st project of a series of projects for the wasd-workshop
 
 Version of unity used: [Unity 2018.3](https://unity3d.com/)
 
